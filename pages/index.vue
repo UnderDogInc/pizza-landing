@@ -1,8 +1,10 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import HomePage from "~/features/home/HomePage.vue";
+</script>
 
 <template>
-  <div class="posts-page">
-    <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"></section>
+  <div class="posts-page mx-auto max-w-7xl">
+    <HomePage />
   </div>
 </template>
 

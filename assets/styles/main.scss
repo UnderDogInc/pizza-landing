@@ -1,13 +1,33 @@
+@import "primeicons/primeicons.css";
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-caveat {
+  font-family: "Caveat", cursive;
+}
+
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
 
 html,
 body,
 #__nuxt {
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: "Inter", sans-serif;
   background-image: url("/public/images/main-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   background-color: #2F4A38;
-
 }
+

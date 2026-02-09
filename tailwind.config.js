@@ -8,6 +8,9 @@ export default {
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./shared/**/*.{js,vue,ts}",
+    "./features/**/*.{js,vue,ts}",
+    "./entities/**/*.{js,vue,ts}",
+    "./widgets/**/*.{js,vue,ts}",
   ],
   theme: {
     extend: {

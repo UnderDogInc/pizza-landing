@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
 
-  modules: ["@nuxtjs/tailwindcss", "@primevue/nuxt-module"],
+  modules: ["@nuxtjs/tailwindcss", "@primevue/nuxt-module", "@nuxt/image", "@vueuse/nuxt"],
 
   primevue: {
     options: {
@@ -17,10 +17,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: [
-    "primeicons/primeicons.css",
-    "~/assets/styles/main.scss",
-  ],
+  css: ["~/assets/styles/main.scss"],
 
   app: {
     head: {
@@ -66,5 +63,28 @@ export default defineNuxtConfig({
 
   tailwindcss: {
     configPath: "tailwind.config.js",
+    config: {
+      content: [
+        "./app.vue",
+        "./components/**/*.{js,vue,ts}",
+        "./layouts/**/*.vue",
+        "./pages/**/*.vue",
+        "./shared/**/*.{js,vue,ts}",
+        "./features/**/*.{js,vue,ts}",
+        "./entities/**/*.{js,vue,ts}",
+        "./widgets/**/*.{js,vue,ts}",
+      ],
+    },
+  },
+
+  image: {
+    format: ["webp", "avif"],
+    quality: 80,
+  },
+
+  alias: {
+    "#entities": "~/entities",
+    "#features": "~/features",
+    "#widgets": "~/widgets",
   },
 });

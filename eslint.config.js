@@ -28,6 +28,7 @@ export default [
       "unused-imports": unusedImports,
     },
     rules: {
+      "no-undef": "off",
       "no-unused-vars": "off",
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [

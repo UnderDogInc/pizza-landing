@@ -21,7 +21,7 @@ const footerLinks = {
 
 <template>
   <footer class="border-t border-slate-200 bg-slate-50">
-    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <div class="sm:col-span-2 lg:col-span-1">
           <NuxtLink
