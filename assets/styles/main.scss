@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#__nuxt {
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  background-image: url("/public/images/main-background.png");
+  background-color: #2F4A38;
+
+}
