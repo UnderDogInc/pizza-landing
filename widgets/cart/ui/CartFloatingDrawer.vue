@@ -1,10 +1,13 @@
 <script lang="ts" setup>
 import Drawer from "primevue/drawer";
 import Button from "primevue/button";
+import { useAuthModal, useCurrentUser } from "#features/auth";
 import { useCart } from "#features/cart";
 import { QuantityCounter } from "#shared/ui";
 
 const isVisible = ref(false);
+const { user, load: loadUser } = useCurrentUser();
+const { open: openAuthModal } = useAuthModal();
 
 const {
   cart,
@@ -23,6 +26,17 @@ const hasItems = computed(
 
 function formatPrice(value: number): string {
   return value.toLocaleString("ru-RU");
+}
+
+async function handleCheckoutClick() {
+  await loadUser();
+  if (user.value) {
+    isVisible.value = false;
+    await navigateTo("/checkout");
+  } else {
+    isVisible.value = false;
+    openAuthModal("register");
+  }
 }
 </script>
 
@@ -174,16 +188,11 @@ function formatPrice(value: number): string {
               >
             </div>
           </div>
-          <NuxtLink
-            to="/checkout"
-            class="block w-full"
-            @click="isVisible = false"
-          >
-            <Button
-              class="bg-primary text-white !w-full !rounded-xl !border-none hover:!border-none !py-3 !font-semibold hover:!bg-primary/80"
-              label="Перейти к оформлению"
-            />
-          </NuxtLink>
+          <Button
+            class="!w-full !rounded-xl !border-0 !bg-primary !py-3 !font-semibold !text-white hover:!bg-primary/80"
+            label="Перейти к оформлению"
+            @click="handleCheckoutClick"
+          />
         </div>
       </div>
     </Drawer>

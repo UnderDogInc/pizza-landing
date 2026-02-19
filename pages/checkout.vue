@@ -5,6 +5,7 @@ import { QuantityCounter, YandexDeliveryMap } from "#shared/ui";
 
 definePageMeta({
   layout: "default",
+  middleware: "checkout-auth",
 });
 
 const {
