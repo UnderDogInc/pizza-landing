@@ -16,14 +16,14 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#FB5E08",
+          DEFAULT: "#FF6B35",
           50: "#FFF5F0",
           100: "#FFE6D9",
           200: "#FFCCB3",
           300: "#FFA87A",
           400: "#FF8542",
-          500: "#FB5E08",
-          600: "#E55507",
+          500: "#FF6B35",
+          600: "#E55A2B",
           700: "#C44806",
           800: "#9E3A05",
           900: "#782D04",
@@ -45,9 +45,9 @@ export default {
           950: "#0D0D0D",
         },
         brand: {
-          green: "#2F4A38",
+          green: "#1A3C2A",
           "green-light": "#3D5C4A",
-          "green-dark": "#243830",
+          "green-dark": "#0F2818",
         },
       },
       fontFamily: {
@@ -57,6 +57,20 @@ export default {
       borderRadius: {
         "2xl": "1rem",
         "3xl": "1.25rem",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "50%": { transform: "translateY(-20px) rotate(5deg)" },
+        },
+        "fade-in-up": {
+          from: { opacity: "0", transform: "translateY(30px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite",
+        "fade-in-up": "fade-in-up 0.6s ease-out forwards",
       },
     },
   },

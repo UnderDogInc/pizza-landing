@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useAuthModal, useCurrentUser } from "#features/auth";
-import { AppLogo } from "#shared/ui";
 import Button from "primevue/button";
 
 const { open: openAuthModal } = useAuthModal();
@@ -12,62 +11,62 @@ onMounted(() => {
 </script>
 
 <template>
-  <header class="w-full border-b border-white/10 bg-brand-green">
+  <header class="sticky top-0 z-[100] w-full border-b border-white/10 bg-[rgba(15,40,24,0.95)] backdrop-blur-md">
     <div
-      class="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 sm:h-16 sm:px-6 lg:px-8"
+      class="mx-auto flex h-14 max-w-[1400px] items-center justify-between gap-4 px-6 sm:h-16 sm:px-8 lg:px-8"
     >
       <NuxtLink
         to="/"
-        class="mr-4 flex flex-nowrap items-center gap-2 shrink-0"
+        class="mr-4 flex flex-nowrap items-center gap-3 shrink-0 text-white no-underline"
       >
         <div
-          class="h-[52px] w-[52px] shrink-0 sm:h-[60px] sm:w-[60px] [&>svg]:h-full [&>svg]:w-full"
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-lg font-bold sm:h-12 sm:w-12"
         >
-          <AppLogo />
+          <span>🍕</span>
         </div>
         <div class="flex shrink-0 flex-col">
-          <span class="font-caveat text-nowrap text-xl text-white sm:text-2xl">
+          <span class="text-xl font-bold tracking-tight text-white sm:text-xl">
             Куп и боб
           </span>
-          <span class="whitespace-nowrap text-[10px] text-white/80 sm:text-xs">
-            пицца и бургеры
+          <span class="text-xs text-white/70">
+            Пицца и бургеры
           </span>
         </div>
       </NuxtLink>
 
       <div class="flex min-w-0 flex-1 items-center justify-end gap-3 sm:gap-6">
-        <Button
-          icon="pi pi-map-marker"
-          label="Всеволожский проспект 29"
-          class="!hidden !items-center !gap-1.5 !rounded-full !border !border-white/20 !bg-white/5 !px-3 !py-1.5 !text-xs !text-white/90 hover:!bg-white/10 sm:!flex [&_.p-button-label]:truncate"
-          aria-haspopup="listbox"
-        />
+        <div class="hidden items-center gap-6 sm:flex">
+          <div class="flex cursor-pointer items-center gap-2 text-sm text-white/80 transition-colors hover:text-white">
+            <i class="pi pi-map-marker" aria-hidden="true" />
+            <span>Всеволожский проспект 29</span>
+          </div>
+        </div>
 
-        <ul class="flex items-center gap-2 sm:gap-4">
+        <ul class="flex items-center gap-4">
           <li>
-            <a
-              href="/"
-              class="rounded-full p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-              aria-label="Telegram"
+            <button
+              type="button"
+              class="flex h-10 w-10 items-center justify-center rounded-[10px] bg-white/10 text-white transition-all hover:-translate-y-0.5 hover:bg-white/20"
+              aria-label="Избранное"
             >
-              <i class="pi pi-telegram" aria-hidden="true" />
-            </a>
+              <i class="pi pi-heart" aria-hidden="true" />
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="flex h-10 w-10 items-center justify-center rounded-[10px] bg-white/10 text-white transition-all hover:-translate-y-0.5 hover:bg-white/20"
+              aria-label="Поиск"
+            >
+              <i class="pi pi-search" aria-hidden="true" />
+            </button>
           </li>
           <li>
             <a
-              href="/"
-              class="rounded-full p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-              aria-label="WhatsApp"
-            >
-              <i class="pi pi-whatsapp" aria-hidden="true" />
-            </a>
-          </li>
-          <li>
-            <a
-              class="font-semibold text-white transition-opacity hover:opacity-90 text-sm sm:text-base"
+              class="text-[15px] font-semibold text-white no-underline transition-opacity hover:opacity-90"
               href="tel:+78005553535"
             >
-              +7 (800) 555 35-35
+              +7 (800) 555-35-35
             </a>
           </li>
         </ul>
@@ -75,7 +74,7 @@ onMounted(() => {
         <NuxtLink
           v-if="user"
           to="/profile"
-          class="flex items-center gap-2 rounded-full border-0 bg-primary px-4 py-2 text-sm font-medium text-white no-underline hover:bg-primary-600"
+          class="flex items-center gap-2 rounded-[10px] border-0 bg-primary px-6 py-3 text-sm font-semibold text-white no-underline transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-[0_4px_15px_rgba(255,107,53,0.4)]"
           aria-label="Профиль"
         >
           <i class="pi pi-user" aria-hidden="true" />
@@ -83,7 +82,7 @@ onMounted(() => {
         </NuxtLink>
         <Button
           v-else
-          class="!ml-0 !rounded-full !border-0 !bg-primary !px-4 !py-2 !text-sm !font-medium !text-white hover:!bg-primary-600"
+          class="!ml-0 !flex !items-center !gap-2 !rounded-[10px] !border-0 !bg-primary !px-6 !py-3 !text-sm !font-semibold !text-white transition-all hover:!-translate-y-0.5 hover:!bg-primary-600 hover:!shadow-[0_4px_15px_rgba(255,107,53,0.4)]"
           label="Войти"
           icon="pi pi-user"
           size="small"

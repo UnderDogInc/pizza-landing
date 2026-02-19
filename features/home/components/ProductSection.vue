@@ -42,22 +42,27 @@ watch(
 <template>
   <section
     :id="`category-${slug}`"
-    class="scroll-mt-[4.5rem] py-8 px-4 sm:scroll-mt-20 sm:py-12 sm:px-6"
+    class="scroll-mt-[4.5rem] px-4 pb-16 sm:scroll-mt-20 sm:px-6 lg:px-8"
   >
     <ScrollReveal animation="fade-up">
-      <h2
-        class="mb-4 text-xl font-bold tracking-tight text-white sm:mb-5 sm:text-2xl"
-      >
-        {{ label }}
-      </h2>
-      <ul
-        class="products-scroll flex items-stretch gap-3 overflow-x-auto pb-2 sm:gap-4"
-      >
-        <li
-          v-for="(productItem, index) in products"
-          :key="index"
-          class="w-[172px] shrink-0 sm:w-[220px]"
+      <div class="category-header mb-6 flex items-center justify-between">
+        <h2 class="category-name flex items-center gap-3 text-2xl font-bold text-white">
+          {{ label }}
+          <span class="rounded-full bg-white/10 px-3 py-1 text-sm text-white/70">
+            {{ products.length }} товаров
+          </span>
+        </h2>
+        <NuxtLink
+          :to="`/catalog?category=${slug}`"
+          class="rounded-[10px] bg-primary px-4 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-[0_4px_15px_rgba(255,107,53,0.4)]"
         >
+          Смотреть все
+        </NuxtLink>
+      </div>
+      <ul
+        class="products-grid grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(280px,1fr))]"
+      >
+        <li v-for="(productItem, index) in products" :key="index">
           <ProductCard
             :id="productItem.id"
             :title="productItem.title"
@@ -86,13 +91,4 @@ watch(
 </template>
 
 <style scoped>
-.products-scroll {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.products-scroll::-webkit-scrollbar {
-  display: none;
-}
 </style>

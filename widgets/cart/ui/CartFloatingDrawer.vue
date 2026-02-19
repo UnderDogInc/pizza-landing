@@ -42,19 +42,21 @@ async function handleCheckoutClick() {
 
 <template>
   <div>
-    <div class="fixed bottom-6 right-6 z-50 hidden md:block">
-      <Button
-        icon="pi pi-shopping-cart"
+    <div class="fixed bottom-8 right-8 z-[99] hidden md:block">
+      <button
+        type="button"
+        class="cart-fab relative flex h-16 w-16 items-center justify-center rounded-full border-0 bg-primary text-white shadow-[0_4px_20px_rgba(255,107,53,0.4)] transition-all hover:scale-110 hover:rotate-[10deg] hover:shadow-[0_6px_30px_rgba(255,107,53,0.6)]"
         aria-label="Корзина"
-        class="!relative !h-14 !w-14 !rounded-full !border-0 !bg-primary !text-white !shadow-lg hover:!bg-primary-600"
         @click="isVisible = true"
-      />
-      <span
-        v-if="totalCount > 0"
-        class="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-primary"
       >
-        {{ totalCount }}
-      </span>
+        <i class="pi pi-shopping-cart text-2xl" aria-hidden="true" />
+        <span
+          v-if="totalCount > 0"
+          class="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white px-1 text-xs font-bold text-primary shadow-[0_2px_8px_rgba(0,0,0,0.2)]"
+        >
+          {{ totalCount }}
+        </span>
+      </button>
     </div>
 
     <div

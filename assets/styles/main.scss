@@ -7,6 +7,15 @@
 
 :root {
   --app-font-family: "Inter", sans-serif;
+  --primary: #ff6b35;
+  --primary-hover: #e55a2b;
+  --dark: #1a3c2a;
+  --darker: #0f2818;
+  --light: #f8f9fa;
+  --gray: #6b7280;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .font-caveat {
@@ -28,10 +37,8 @@ body,
   min-height: 100vh;
   min-height: 100dvh;
   font-family: var(--app-font-family);
-  background-image: url("/public/images/main-background.webp");
-  background-size: cover;
-  background-position: center;
-  background-color: #243830;
+  background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+  color: var(--light);
 }
 
 button,
@@ -39,6 +46,27 @@ input,
 textarea,
 select {
   font-family: inherit;
-}.p-component {
+}
+
+.p-component {
   font-family: var(--app-font-family);
+}
+
+/* Scrollbar (faf.html style) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
 }

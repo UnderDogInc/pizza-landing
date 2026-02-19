@@ -46,34 +46,36 @@ function handleCardClick() {
 
 <template>
   <article
-    class="group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-shadow duration-200 hover:shadow-xl"
+    class="product-card group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-[20px] bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)]"
     @click="handleCardClick"
   >
     <div
-      class="relative aspect-square w-full shrink-0 overflow-hidden rounded-t-2xl bg-secondary/50"
+      class="relative h-[220px] w-full shrink-0 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200"
     >
       <NuxtImg
         :src="image"
         :alt="imageAlt || title"
         class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
       />
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent to-black/5"
+        aria-hidden
+      />
     </div>
 
     <div
-      class="relative flex min-h-0 flex-1 flex-col gap-1 px-3 pb-3 pt-2 sm:gap-2 sm:px-4 sm:pb-4 sm:pt-3"
+      class="relative flex min-h-0 flex-1 flex-col gap-2 px-6 py-4 text-[#1a3c2a]"
     >
       <h3
-        class="shrink-0 text-sm font-bold tracking-tight text-dark-800 line-clamp-2 sm:text-base"
+        class="shrink-0 text-lg font-bold tracking-tight text-[#0f2818] line-clamp-2"
       >
         {{ title }}
       </h3>
-      <p
-        class="overflow-hidden text-[10px] text-dark-400 line-clamp-2 sm:text-xs"
-      >
+      <p class="overflow-hidden text-sm text-[#6b7280] line-clamp-2 leading-relaxed">
         {{ description }}
       </p>
       <div class="mt-auto flex shrink-0 items-center justify-between gap-2">
-        <span class="text-base font-bold text-dark sm:text-lg">
+        <span class="text-xl font-bold text-primary">
           {{ formatPrice(price) }} ₽
         </span>
         <div v-if="quantity > 0" @click.stop>
@@ -90,7 +92,7 @@ function handleCardClick() {
           aria-label="В корзину"
           :loading="pending"
           :disabled="pending"
-          class="!h-9 !w-9 !min-w-0 !shrink-0 !rounded-full !border-0 !bg-primary !p-0 !text-white hover:!bg-primary-600"
+          class="!h-10 !w-10 !min-w-0 !shrink-0 !rounded-[10px] !border-0 !border-primary !bg-primary !p-0 !text-white transition-all hover:!scale-105 hover:!bg-primary-600"
           @click.stop="addProduct(cartProduct)"
         />
       </div>
