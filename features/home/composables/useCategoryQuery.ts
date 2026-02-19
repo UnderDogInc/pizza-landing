@@ -5,7 +5,7 @@ export interface CategoryItem {
 
 export function useCategoryQuery(
   categories: CategoryItem[],
-  onCategoryChange: (slug: string) => void,
+  onCategoryChange: (slug: string) => void
 ) {
   const route = useRoute();
   const router = useRouter();
@@ -36,7 +36,7 @@ export function useCategoryQuery(
       ) {
         onCategoryChange(newCategory);
       }
-    },
+    }
   );
 
   return { getCategoryFromQuery, setCategoryInQuery };

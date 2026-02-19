@@ -6,11 +6,19 @@ export function useProductModal() {
   const isOpen = ref(false);
   const product = ref<Product | null>(null);
 
-  function open(selectedProduct: Product, categorySlug: string, productIndex: number) {
+  function open(
+    selectedProduct: Product,
+    categorySlug: string,
+    productIndex: number
+  ) {
     product.value = selectedProduct;
     isOpen.value = true;
     router.replace({
-      query: { ...route.query, category: categorySlug, product: String(productIndex) },
+      query: {
+        ...route.query,
+        category: categorySlug,
+        product: String(productIndex),
+      },
     });
   }
 
@@ -23,7 +31,11 @@ export function useProductModal() {
     router.replace({ query });
   }
 
-  function openFromRoute(categorySlug: string, productIndex: number, products: Product[]) {
+  function openFromRoute(
+    categorySlug: string,
+    productIndex: number,
+    products: Product[]
+  ) {
     const p = products[productIndex];
     if (p) {
       product.value = p;

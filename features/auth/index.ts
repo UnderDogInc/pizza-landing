@@ -1,0 +1,10 @@
+export { apiLogout, updateUser } from "./api/authApi";
+export { default as AuthModal } from "./ui/AuthModal.vue";
+export { useAuthForm } from "./model/useAuthForm";
+export { useAuthModal } from "./model/useAuthModal";
+export { useCurrentUser } from "./model/useCurrentUser";
+export { useRegisterForm } from "./model/useRegisterForm";
+export { loginSchema, type LoginFormData } from "./model/loginSchema";
+export { registerSchema, type RegisterFormData } from "./model/registerSchema";
+export type { LoginDTO, RegisterDTO, User } from "./model/types";
+export type { AuthMode } from "./model/useAuthModal";

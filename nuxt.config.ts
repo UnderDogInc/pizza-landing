@@ -4,7 +4,12 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
 
-  modules: ["@nuxtjs/tailwindcss", "@primevue/nuxt-module", "@nuxt/image", "@vueuse/nuxt"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@primevue/nuxt-module",
+    "@nuxt/image",
+    "@vueuse/nuxt",
+  ],
 
   primevue: {
     options: {
@@ -25,7 +30,11 @@ export default defineNuxtConfig({
       title: "pepe app",
       link: [
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
+        },
         {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@100..900&display=swap",
@@ -46,14 +55,26 @@ export default defineNuxtConfig({
         { rel: "manifest", href: "/favicon/site.webmanifest" },
       ],
       meta: [
-        { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1" },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1, maximum-scale=1",
+        },
       ],
     },
   },
 
   runtimeConfig: {
     public: {
-      backendUrl: process.env.NUXT_PUBLIC_BACKEND_URL || "https://jsonplaceholder.typicode.com",
+      backendUrl:
+        process.env.NUXT_PUBLIC_BACKEND_URL ||
+        "https://jsonplaceholder.typicode.com",
+      catalogApiUrl:
+        process.env.NUXT_PUBLIC_CATALOG_API_URL || "http://localhost:4000",
+      yandexMapsApikey: process.env.NUXT_PUBLIC_YANDEX_MAPS_APIKEY || "",
+      yandexSuggestApikey:
+        process.env.NUXT_PUBLIC_YANDEX_SUGGEST_APIKEY ||
+        process.env.NUXT_PUBLIC_YANDEX_MAPS_APIKEY ||
+        "",
     },
   },
 
@@ -85,6 +106,7 @@ export default defineNuxtConfig({
   alias: {
     "#entities": "~/entities",
     "#features": "~/features",
+    "#shared": "~/shared",
     "#widgets": "~/widgets",
   },
 });

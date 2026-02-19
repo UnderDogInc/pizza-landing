@@ -2,12 +2,15 @@ import { fetchPostsPage } from "./usePostApi";
 import type { IPost } from "~/types/post";
 
 export const usePostsQuery = () => {
-  return useFetch<IPost[]>(() => {
-    const config = useRuntimeConfig();
-    return `${config.public.backendUrl}/posts`;
-  }, {
-    credentials: "include",
-  });
+  return useFetch<IPost[]>(
+    () => {
+      const config = useRuntimeConfig();
+      return `${config.public.backendUrl}/posts`;
+    },
+    {
+      credentials: "include",
+    }
+  );
 };
 
 export const useInfinitePosts = () => {
@@ -16,7 +19,12 @@ export const useInfinitePosts = () => {
   const isFetchingNextPage = ref(false);
   const hasNextPage = ref(true);
 
-  const { data: initialData, pending, error, refresh } = useFetch<IPost[]>(
+  const {
+    data: initialData,
+    pending,
+    error,
+    refresh,
+  } = useFetch<IPost[]>(
     () => {
       const config = useRuntimeConfig();
       return `${config.public.backendUrl}/posts?_limit=20&_page=1`;

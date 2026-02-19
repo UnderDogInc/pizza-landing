@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<Props>(), {
   rootMargin: "0px 0px -30px 0px",
 });
 
-const target = ref<HTMLElement | null>(null);
+const target = ref<Maybe<HTMLElement>>(null);
 const isVisible = useScrollReveal(target, {
   rootMargin: props.rootMargin,
   threshold: 0,

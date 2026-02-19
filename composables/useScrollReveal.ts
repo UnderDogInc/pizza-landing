@@ -7,10 +7,14 @@ export interface UseScrollRevealOptions {
 }
 
 export function useScrollReveal(
-  target: Ref<HTMLElement | null | undefined>,
-  options: UseScrollRevealOptions = {},
+  target: Ref<Maybe<HTMLElement> | undefined>,
+  options: UseScrollRevealOptions = {}
 ) {
-  const { rootMargin = "0px 0px -50px 0px", threshold = 0, once = true } = options;
+  const {
+    rootMargin = "0px 0px -50px 0px",
+    threshold = 0,
+    once = true,
+  } = options;
   const isVisible = ref(false);
 
   if (import.meta.server) {
@@ -29,7 +33,7 @@ export function useScrollReveal(
     {
       rootMargin,
       threshold,
-    },
+    }
   );
 
   return isVisible;

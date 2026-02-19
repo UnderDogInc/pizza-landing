@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-const goHome = () => {
+import Button from "primevue/button";
+
+function goHome() {
   navigateTo("/");
-};
+}
 </script>
 
 <template>
@@ -17,13 +19,7 @@ const goHome = () => {
         </div>
       </div>
       <div class="flex justify-center">
-        <button
-          type="button"
-          class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-200"
-          @click="goHome"
-        >
-          Go back home
-        </button>
+        <Button label="Go back home" severity="secondary" @click="goHome" />
       </div>
     </div>
   </div>

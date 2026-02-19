@@ -19,7 +19,7 @@ export function useCategories(categories = DEFAULT_CATEGORIES) {
     categories,
     (slug) => {
       selectedSlug.value = slug;
-    },
+    }
   );
 
   const {

@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --app-font-family: "Inter", sans-serif;
+}
+
 .font-caveat {
   font-family: "Caveat", cursive;
 }
@@ -23,11 +27,18 @@ body,
 #__nuxt {
   min-height: 100vh;
   min-height: 100dvh;
-  font-family: "Inter", sans-serif;
-  background-image: url("/public/images/main-background.png");
-  background-repeat: no-repeat;
+  font-family: var(--app-font-family);
+  background-image: url("/public/images/main-background.webp");
   background-size: cover;
   background-position: center;
-  background-color: #2F4A38;
+  background-color: #243830;
 }
 
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}.p-component {
+  font-family: var(--app-font-family);
+}

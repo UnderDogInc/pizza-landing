@@ -159,13 +159,7 @@ export default [
       ],
       "vue/no-unused-refs": ["error"],
       "vue/no-use-v-else-with-v-for": ["error"],
-      "vue/no-useless-v-bind": [
-        "error",
-        {
-          ignoreIncludesComment: false,
-          ignoreStringEscape: false,
-        },
-      ],
+      "vue/no-useless-v-bind": "off",
       "vue/padding-line-between-blocks": ["error", "always"],
       "vue/padding-line-between-tags": [
         "error",

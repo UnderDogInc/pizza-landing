@@ -31,36 +31,46 @@ watch(
       if (!Number.isNaN(index)) {
         openFromRoute(props.slug, index, props.products);
       }
-    } else if ((!query.category && !query.product) && isOpen.value) {
+    } else if (!query.category && !query.product && isOpen.value) {
       close();
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 </script>
 
 <template>
   <section
     :id="`category-${slug}`"
-    class="scroll-mt-[4.5rem] py-6 px-4 sm:scroll-mt-20 sm:py-10 sm:px-6"
+    class="scroll-mt-[4.5rem] py-8 px-4 sm:scroll-mt-20 sm:py-12 sm:px-6"
   >
     <ScrollReveal animation="fade-up">
-      <h2 class="mb-3 text-lg font-bold text-white sm:mb-4 sm:text-xl">
+      <h2
+        class="mb-4 text-xl font-bold tracking-tight text-white sm:mb-5 sm:text-2xl"
+      >
         {{ label }}
       </h2>
-      <ul class="products-scroll flex items-stretch gap-2 overflow-x-auto pb-2 sm:gap-3">
+      <ul
+        class="products-scroll flex items-stretch gap-3 overflow-x-auto pb-2 sm:gap-4"
+      >
         <li
           v-for="(productItem, index) in products"
           :key="index"
-          class="flex shrink-0"
+          class="w-[172px] shrink-0 sm:w-[220px]"
         >
           <ProductCard
+            :id="productItem.id"
             :title="productItem.title"
             :description="productItem.description"
             :price="productItem.price"
             :image="productItem.image"
             :image-alt="productItem.imageAlt"
-            @click="(p) => handleProductClick(p, index)"
+            :weight="productItem.weight"
+            :calories="productItem.calories"
+            :proteins="productItem.proteins"
+            :fats="productItem.fats"
+            :carbs="productItem.carbs"
+            @click="() => handleProductClick(productItem, index)"
           />
         </li>
       </ul>

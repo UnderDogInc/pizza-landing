@@ -46,7 +46,7 @@ export function useCategoryScrollSpy(options: UseCategoryScrollSpyOptions) {
       {
         rootMargin: "-80px 0px -60% 0px",
         threshold: 0,
-      },
+      }
     );
 
     categories.forEach(({ slug }) => {

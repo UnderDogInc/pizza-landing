@@ -1,15 +1,33 @@
 <script lang="ts" setup>
-import type { Product } from "../model/types";
 import Button from "primevue/button";
+import { useCart } from "#features/cart";
+import { QuantityCounter } from "#shared/ui";
+import type { Product } from "../model/types";
 
 interface Props extends Product {}
 
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
-  select: [];
   click: [product: Product];
 }>();
+
+const { addProduct, decrementProduct, getProductQuantity, pending } = useCart();
+
+const cartProduct = computed(() => ({
+  id: props.id,
+  name: props.title,
+  price: props.price,
+  description: props.description,
+  imageUrl: props.image,
+  grams: props.weight ?? null,
+  proteins: props.proteins ?? null,
+  fats: props.fats ?? null,
+  carbohydrates: props.carbs ?? null,
+  calories: props.calories ?? null,
+}));
+
+const quantity = computed(() => getProductQuantity(cartProduct.value));
 
 function formatPrice(value: number): string {
   return value.toLocaleString("ru-RU");
@@ -28,35 +46,52 @@ function handleCardClick() {
 
 <template>
   <article
-    class="flex h-full w-full max-w-[160px] cursor-pointer flex-col overflow-hidden rounded-2xl bg-white transition-shadow hover:shadow-lg sm:max-w-[200px]"
+    class="group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-shadow duration-200 hover:shadow-xl"
     @click="handleCardClick"
   >
-    <div class="relative flex shrink-0 justify-center px-2 pt-2 sm:px-3 sm:pt-3">
+    <div
+      class="relative aspect-square w-full shrink-0 overflow-hidden rounded-t-2xl bg-secondary/50"
+    >
       <NuxtImg
         :src="image"
         :alt="imageAlt || title"
-        class="aspect-square w-full max-w-[100px] rounded-full object-cover drop-shadow-md sm:max-w-[140px]"
+        class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
       />
     </div>
 
-    <div class="relative flex min-h-0 flex-1 flex-col gap-1 px-2 pb-2 pt-1 sm:gap-2 sm:px-3 sm:pb-3 sm:pt-2">
-      <h3 class="shrink-0 text-xs font-bold text-dark sm:text-sm">
+    <div
+      class="relative flex min-h-0 flex-1 flex-col gap-1 px-3 pb-3 pt-2 sm:gap-2 sm:px-4 sm:pb-4 sm:pt-3"
+    >
+      <h3
+        class="shrink-0 text-sm font-bold tracking-tight text-dark-800 line-clamp-2 sm:text-base"
+      >
         {{ title }}
       </h3>
-      <p class="overflow-hidden text-[10px] text-gray-500 line-clamp-3 sm:text-xs">
+      <p
+        class="overflow-hidden text-[10px] text-dark-400 line-clamp-2 sm:text-xs"
+      >
         {{ description }}
       </p>
-
-      <div class="mt-auto flex shrink-0 items-center justify-between gap-1 pt-1 sm:gap-2 sm:pt-2">
-        <span class="text-xs font-bold text-dark sm:text-sm">
+      <div class="mt-auto flex shrink-0 items-center justify-between gap-2">
+        <span class="text-base font-bold text-dark sm:text-lg">
           {{ formatPrice(price) }} ₽
         </span>
+        <div v-if="quantity > 0" @click.stop>
+          <QuantityCounter
+            :value="quantity"
+            :loading="pending"
+            @increment="addProduct(cartProduct)"
+            @decrement="decrementProduct(cartProduct)"
+          />
+        </div>
         <Button
-          severity="contrast"
-          size="small"
-          class="h-fit shrink-0 !min-w-0 !p-1.5 sm:!p-2"
+          v-else
           icon="pi pi-shopping-cart"
-          @click.stop="emit('select')"
+          aria-label="В корзину"
+          :loading="pending"
+          :disabled="pending"
+          class="!h-9 !w-9 !min-w-0 !shrink-0 !rounded-full !border-0 !bg-primary !p-0 !text-white hover:!bg-primary-600"
+          @click.stop="addProduct(cartProduct)"
         />
       </div>
     </div>
